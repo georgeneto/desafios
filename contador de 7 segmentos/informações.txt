@@ -1,0 +1,4 @@
+Tempo limite: 1 hora.
+Tecnologias: HTML, CSS, JS puro.
+
+Única fonte de pesquisa permitida: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript
