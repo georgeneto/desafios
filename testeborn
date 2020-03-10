@@ -1,0 +1,56 @@
+// Try edit message
+const square =[
+  [1,2,3,4,5],
+  [1,2,3,4,5],
+  [1,2,3,4,5],
+  [1,2,3,4,5],
+  [1,2,3,4,5],
+]
+
+const EMPTY_IDENTIFIER = "0";
+
+const isTheIdentifierASquare = (identifier) => {
+  let isItASquare = !identifier.find( row => row.length !== identifier.length )
+  console.log("Is it a square?", isItASquare)
+  return isItASquare
+}
+
+const areTheExtremitiesValid = (identifier) => {
+  let maxIndex = identifier.length -1;
+  let extremitiesValid = ![ (identifier[0][0]).toString(), (identifier[maxIndex][maxIndex]).toString()].includes(EMPTY_IDENTIFIER);
+  console.log("Are the extremities valid?", extremitiesValid);
+  return extremitiesValid;
+}
+
+const isThereATriangule = identifier => {
+
+  let squareSize = identifier.length;
+  let upperTriangle = []
+  let lowerTriangle = []
+
+  for(let x=0; x<squareSize; x++){
+    for(let y=0; y<squareSize; y++){
+
+      if(y>=x){
+        upperTriangle.push((identifier[x][y]).toString());
+      }
+
+      if(y<=x){
+        lowerTriangle.push((identifier[x][y]).toString());
+      }
+
+    }
+  }
+
+  console.log("Is there a UPPER triangle?", !upperTriangle.includes(EMPTY_IDENTIFIER))
+  console.log("Is there a LOWER triangle?", !lowerTriangle.includes(EMPTY_IDENTIFIER))
+
+  return !upperTriangle.includes(EMPTY_IDENTIFIER) || !lowerTriangle.includes(EMPTY_IDENTIFIER);
+}
+
+const validateIdentifier = square => {
+  console.log("Validando matriz \n", square.flatMap( x => x.join(",") + "\n").join(""))
+  return isTheIdentifierASquare(square) && areTheExtremitiesValid(square) && isThereATriangule(square)
+}
+
+validateIdentifier(square)
